@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Channels Strategy Log</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Channels Strategy Log</h2>
+        <form id="uploadForm">
+            <label for="channel">Channel Name:</label>
+            <select id="channel" name="channel">
+                <!-- Channel names will be populated here -->
+            </select>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Upload Type</td>
+                        <td><select name="uploadTypeMonday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeTuesday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeWednesday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeThursday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeFriday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeSaturday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                        <td><select name="uploadTypeSunday">
+                            <option value="None">None</option>
+                            <option value="Short">Short</option>
+                            <option value="Single Episode">Single Episode</option>
+                            <option value="Compilation">Compilation</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Upload Length</td>
+                        <td><input type="text" name="uploadLengthMonday"></td>
+                        <td><input type="text" name="uploadLengthTuesday"></td>
+                        <td><input type="text" name="uploadLengthWednesday"></td>
+                        <td><input type="text" name="uploadLengthThursday"></td>
+                        <td><input type="text" name="uploadLengthFriday"></td>
+                        <td><input type="text" name="uploadLengthSaturday"></td>
+                        <td><input type="text" name="uploadLengthSunday"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const channelDropdown = document.getElementById('channel');
+            const channels = [
+                "Baby Truck Cartoons",
+                "Garagem do Gecko - Desenhos Animados em Português",
+                "Garage di Gecko in italiano",
+                "Garaje de Gecko en Español",
+                "Garasi Gecko Dalam Bahasa Indonesia",
+                "Gecko and Blippi - Learning Videos for Kids",
+                "Gecko's Animal Pals - Vehicle Cartoons for Kids",
+                "Gecko's Garage - Trucks For Children",
+                "Gecko's Garage Deutsch - lustige Videos für Kinder",
+                "Gecko's Garage in het Nederlands",
+                "Gecko's Garage USA - Truck Cartoons for Kids",
+                "Gecko'nun Garajı",
+                "Le Garage de Gecko en français",
+                "Max the Monster Truck & Vehicle Friends World",
+                "Morphle & Gecko's Garage - Dibujos animados",
+                "Morphle & Gecko's Garage - Desenhos Animados",
+                "Toddler Fun Learning",
+                "Warsztat Gekona - Bajka o pojazdach po polsku",
+                "Гараж Геккона на русском — Мультики про машинки",
+                "ゲッコーのガレージ☆Gecko's Garage 日本語"
+            ];
+
+            channels.sort().forEach(channel => {
+                const option = document.createElement('option');
+                option.value = channel;
+                option.text = channel;
+                channelDropdown.add(option);
+            });
+        });
+
+        function submitForm() {
+            const formData = new FormData(document.getElementById('uploadForm'));
+            fetch('/submit', {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(formData)),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Data submitted successfully!');
+                resetForm();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function resetForm() {
+            document.getElementById('uploadForm').reset();
+        }
+    </script>
+</body>
+</html>
