@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    font-size: 14px; /* Smaller font size */
+}
+
+.container {
+    max-width: 800px; /* Increased max-width to better accommodate two-thirds layout */
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input[type="text"], select {
+    width: calc(66.67% - 20px); /* Channel dropdown takes up two-thirds of the container */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    table-layout: fixed;
+    margin: 0 auto 20px auto; /* Center the table and add bottom margin */
+    border-collapse: collapse;
+    font-size: 14px; /* Smaller font size */
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    width: 12.5%; /* Uniform width for each column */
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td select, td input[type="text"] {
+    width: 100%; /* Inputs and selects fill their cells */
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 14px; /* Smaller font size for inputs and selects */
+}
+
+button {
+    display: block;
+    width: calc(50% - 10px); /* Set button width to half of the container width */
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto 10px auto; /* Center the button and add bottom margin */
+}
+
+button[type="button"]:first-of-type {
+    background-color: #007bff;
+}
+
+button[type="button"]:first-of-type:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"]:nth-of-type(2) {
+    background-color: #ff0000;
+}
+
+button[type="button"]:nth-of-type(2):hover {
+    background-color: #cc0000;
+}
